@@ -1,0 +1,17 @@
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\UPNChecker.exe.config
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\UPNChecker.exe
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\UPNChecker.pdb
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\System.Management.Automation.dll
+d:\CHECKUPN\CheckUPN\UPNChecker\obj\Debug\UPNChecker.csprojAssemblyReference.cache
+d:\CHECKUPN\CheckUPN\UPNChecker\obj\Debug\UPNChecker.csproj.CoreCompileInputs.cache
+d:\CHECKUPN\CheckUPN\UPNChecker\obj\Debug\UPNChecker.csproj.CopyComplete
+d:\CHECKUPN\CheckUPN\UPNChecker\obj\Debug\UPNChecker.exe
+d:\CHECKUPN\CheckUPN\UPNChecker\obj\Debug\UPNChecker.pdb
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\EntityFramework.dll
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\EntityFramework.SqlServer.dll
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\EntityFramework.SqlServerCompact.dll
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\System.Data.SqlServerCe.dll
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\EntityFramework.xml
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\EntityFramework.SqlServer.xml
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\EntityFramework.SqlServerCompact.xml
+d:\CHECKUPN\CheckUPN\UPNChecker\bin\Debug\ru\EntityFramework.resources.dll

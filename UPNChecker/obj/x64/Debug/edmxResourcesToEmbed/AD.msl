@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ADStoreContainer" CdmEntityContainer="ADContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AD.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="IsInAcceptedDomain" ColumnName="IsInAcceptedDomain" />
+          <ScalarProperty Name="LastLogonTime" ColumnName="LastLogonTime" />
+          <ScalarProperty Name="StorageLimitStatus" ColumnName="StorageLimitStatus" />
+          <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="ProhibitSendQuota" ColumnName="ProhibitSendQuota" />
+          <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="UserPrincipalName" ColumnName="UserPrincipalName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="SamAccountName" ColumnName="SamAccountName" />
+          <ScalarProperty Name="ObjectGUID" ColumnName="ObjectGUID" />
+          <ScalarProperty Name="ObjectClass" ColumnName="ObjectClass" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="DistinguishedName" ColumnName="DistinguishedName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

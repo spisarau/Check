@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AD.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistinguishedName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Enabled" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="GivenName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="ObjectClass" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="ObjectGUID" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="SamAccountName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="SID" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="UserPrincipalName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Alias" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="ServerName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="ProhibitSendQuota" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="ItemCount" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="StorageLimitStatus" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="LastLogonTime" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="IsInAcceptedDomain" Type="nvarchar" MaxLength="4000" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ADStoreContainer">
+    <EntitySet Name="UserSet" EntityType="Self.UserSet" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AD" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ADContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserSet" EntityType="AD.User" />
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistinguishedName" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="Enabled" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="GivenName" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="ObjectClass" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="ObjectGUID" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="SamAccountName" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="SID" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="UserPrincipalName" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="ServerName" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="ProhibitSendQuota" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="ItemCount" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="StorageLimitStatus" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="LastLogonTime" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+    <Property Name="IsInAcceptedDomain" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" DefaultValue="" />
+  </EntityType>
+</Schema>
