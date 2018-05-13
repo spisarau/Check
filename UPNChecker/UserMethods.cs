@@ -8,11 +8,9 @@ namespace UPNChecker
 {
     public partial class User
     {
-        public void addUserPropertiesFromJSON(string json)
+        public User(string json):this()
         {
-
             var userProperties = JsonUtils.DeserializeJSON(json);
-            
             var user = Type.GetType(this.ToString());
             var properties = user.GetProperties();
             foreach (var property in properties)

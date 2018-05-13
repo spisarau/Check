@@ -15,36 +15,42 @@ namespace UPNChecker
         static string dataFile = ConfigurationManager.AppSettings["Upncsv"];
         static string psModule = ConfigurationManager.AppSettings["Module"];
         static string importModule = $"Import-Module -Name {psModule}";
-        static string checkexchattr = "$true";
         static string cmdltName = "Check-UPN";
-        static string addSnapin = "Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn";
         static void Main(string[] args)
         {
-           
-            var upns = File.ReadAllLines(dataFile);
-            WriteLine($"Information  from {dataFile} was loaded.");
-            var users = GetUsers(upns, checkexchattr);
-            ADContainer aDContainer = new ADContainer();
-            foreach (var user in users)
+            try
             {
-                var fuser=aDContainer.UserSet.Find(user.SID);
-                if (fuser == null) {
-                    aDContainer.UserSet.Add(user);
-                    Console.WriteLine($"Information for {user.UserPrincipalName} is succesfully added. ");
+                var upns = File.ReadAllLines(dataFile);
+                if (upns.Length == 0) { WriteLine($"File is empty, can't load information"); return; }
+                WriteLine($"Information  from {dataFile} was loaded.");
+                var users = GetUsers(upns);
+                ADContainer aDContainer = new ADContainer();
+                foreach (var user in users)
+                {
+                    var fuser = aDContainer.UserSet.Find(user.SID);
+                    if (fuser == null)
+                    {
+                        aDContainer.UserSet.Add(user);
+                        Console.WriteLine($"Information for {user.UserPrincipalName} is succesfully added. ");
+                    }
+                    else WriteLine($"Information for {fuser.UserPrincipalName} already exists.");
 
                 }
-                else WriteLine($"Information for {fuser.UserPrincipalName} already exists.");
 
+                aDContainer.SaveChanges();
             }
-            
-            aDContainer.SaveChanges();
-            WriteLine($"Press any key to exit...");
-            ReadKey();
+           
+            catch (Exception e) { WriteLine(e.Message); }
+            finally
+            {
+                WriteLine($"Press any key to exit...");
+                ReadKey();
+            }
+           
         }
         
         static IEnumerable<User> GetUsers(string [] upns, string checkexchattr= "$true") {
             
-            if (upns.Length == 0) return null;
             PowerShell powerShell = PowerShell.Create();
             HashSet<User> users = new HashSet<User>();
             powerShell.AddScript(importModule);
@@ -55,13 +61,12 @@ namespace UPNChecker
                 User usr;
                 powerShell.AddScript($"{cmdltName} {upn} {checkexchattr}");
                 var result = powerShell.Invoke();
-                if (result.Count == 0) continue;
-                if (result[0].ToString().Contains("exception")) { Console.WriteLine($"Couldn't add information for {upn} : {result.First()}");continue; };          
-                usr = new User();
-                usr.addUserPropertiesFromJSON(result[0].ToString());
+                if (result[0].ToString().Contains("exception"))
+                {
+                    Console.WriteLine($"Couldn't add information for {upn} : {result.First()}");continue;
+                };          
+                usr = new User(result[0].ToString());
                 users.Add(usr);
-                
-
             }
            
 
