@@ -16,31 +16,36 @@ Param(
      $right="}";
      $body="";
     try{
-    
-    
+
     $gc=[system.directoryservices.activedirectory.forest]::GetCurrentForest().Name+':3268';
     $adUser=$(Get-ADUser -Filter {userPrincipalName -Like $UPN} -Server $gc);
  
     #Check if user exists
-    if ($adUser -eq $null) {return "$left`"$exception`":`"User not found`"$right"; };
+    if ($adUser -eq $null) {return "$left`"$exception`":`"User is not found`"$right"; };
+    #Getting Acces to Exchange functions
     Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn   
+    #Searching in all domains in the forest
     Set-ADServerSettings -ViewEntireForest $true
+    
     $i=$adUser.PropertyCount;
     
     foreach ($name in $adUser.PropertyNames ){
          $i--;
          $body="${body}`"${name}`":`"$($adUser.$name)`"$(if($i -ne 0) {","})" }
     
-    #Check is CheckExchangeAttributes enabled
-    if ( $CheckExchangeAttributes -eq $false ) {
-        return "${left}${body}${right}";}
+    #Check if CheckExchangeAttributes enabled
+    $result="${left}${body}${right}";
+    if ( $CheckExchangeAttributes -eq $false ) 
+        {
+        return "$result";
+        }
     
-    #Check is Mailbox created
+    #Check if Mailbox created
     $mailbox=$(Get-Mailbox -Filter {userPrincipalName -Like $UPN})
+    
+    if ($mailbox -eq $null) { return "$result"; };
+    
     $mailboxstat=$(Get-MailboxStatistics $UPN)
-    
-    if ($mailbox -eq $null) { return "${left}${body}${right}"; };
-    
    
     $primaryMail=$mailbox.PrimarySmtpAddress.ToString();
     $body="${body},`"Alias`":`"$($mailbox.Alias)`"," ;
@@ -52,7 +57,7 @@ Param(
     $body="${body}`"LastLogonTime`":`"$($mailboxstat.LastLogonTime)`",";
     $body="${body}`"IsInAcceptedDomain`":`"$(IsInAcceptedDomain($mailbox.PrimarySmtpAddress.ToString()).ToString())`"";
 
-    return "${left}${body}${right}";
+    return "$result";
     }
     catch {return "$left`"$exception`":`"$_`"$right";}
 }
