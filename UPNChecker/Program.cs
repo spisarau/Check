@@ -22,7 +22,7 @@ namespace UPNChecker
             {
                 var upns = File.ReadAllLines(dataFile);
                 if (upns.Length == 0) { WriteLine($"File is empty, can't load information"); return; }
-                WriteLine($"Information  from {dataFile} was loaded.");
+                WriteLine($"Information from {dataFile} was loaded.");
                 var users = GetUsers(upns);
                 ADContainer aDContainer = new ADContainer();
                 foreach (var user in users)

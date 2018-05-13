@@ -19,9 +19,9 @@ Param(
     
     
     $gc=[system.directoryservices.activedirectory.forest]::GetCurrentForest().Name+':3268';
-    [Microsoft.ActiveDirectory.Management.ADUser]$adUser=$(Get-ADUser -Filter {userPrincipalName -Like $UPN} -Server $gc);
+    $adUser=$(Get-ADUser -Filter {userPrincipalName -Like $UPN} -Server $gc);
  
-    #Check if user exist
+    #Check if user exists
     if ($adUser -eq $null) {return "$left`"$exception`":`"User not found`"$right"; };
     Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn   
     Set-ADServerSettings -ViewEntireForest $true
