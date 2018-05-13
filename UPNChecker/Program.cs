@@ -30,7 +30,7 @@ namespace UPNChecker
                 var fuser=aDContainer.UserSet.Find(user.SID);
                 if (fuser == null) {
                     aDContainer.UserSet.Add(user);
-                    Console.WriteLine($"Information for {user.UserPrincipalName} is succesfully added ");
+                    Console.WriteLine($"Information for {user.UserPrincipalName} is succesfully added. ");
 
                 }
                 else WriteLine($"Information for {fuser.UserPrincipalName} already exists.");
