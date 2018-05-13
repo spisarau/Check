@@ -29,8 +29,12 @@ namespace UPNChecker
             {
                 var fuser=aDContainer.UserSet.Find(user.SID);
                 if (fuser == null) {
-                    aDContainer.UserSet.Add(user); }
-               
+                    aDContainer.UserSet.Add(user);
+                    Console.WriteLine($"Information for {user.UserPrincipalName} is succesfully added ");
+
+                }
+                else WriteLine($"Information for {fuser.UserPrincipalName} already exists.");
+
             }
             
             aDContainer.SaveChanges();
@@ -56,7 +60,7 @@ namespace UPNChecker
                 usr = new User();
                 usr.addUserPropertiesFromJSON(result[0].ToString());
                 users.Add(usr);
-                Console.WriteLine($"Information for {upn} is succesfully added ");
+                
 
             }
            
