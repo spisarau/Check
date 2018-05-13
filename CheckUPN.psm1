@@ -29,7 +29,7 @@ Param(
     
     foreach ($name in $adUser.PropertyNames ){
          $i--;
-         $body="${body}`"${name}`":`"$($adUser.$name.ToString())`"$(if($i -ne 0) {","})" }
+         $body="${body}`"${name}`":`"$($adUser.$name)`"$(if($i -ne 0) {","})" }
     
     #Check is CheckExchangeAttributes enabled
     if ( $CheckExchangeAttributes -eq $false ) {
@@ -43,13 +43,13 @@ Param(
     
    
     $primaryMail=$mailbox.PrimarySmtpAddress.ToString();
-    $body="${body},`"Alias`":`"$($mailbox.Alias.ToString())`"," ;
-    $body="${body}`"ServerName`":`"$($mailbox.ServerName.ToString())`"," ;
-    $body="${body}`"ProhibitSendQuota`":`"$($mailbox.ProhibitSendQuota.ToString())`",";
-    $body="${body}`"DisplayName`":`"$(if($mailboxstat.DisplayName -ne $null){$mailboxstat.DisplayName.ToString()})`",";
-    $body="${body}`"ItemCount`":`"$($mailboxstat.ItemCount.ToString())`",";
-    $body="${body}`"StorageLimitStatus`":`"$(if($mailboxstat.StorageLimitStatus -ne $null){$mailboxstat.StorageLimitStatus.ToString()})`",";
-    $body="${body}`"LastLogonTime`":`"$($mailboxstat.LastLogonTime.ToString())`",";
+    $body="${body},`"Alias`":`"$($mailbox.Alias)`"," ;
+    $body="${body}`"ServerName`":`"$($mailbox.ServerName)`"," ;
+    $body="${body}`"ProhibitSendQuota`":`"$($mailbox.ProhibitSendQuota)`",";
+    $body="${body}`"DisplayName`":`"$($mailboxstat.DisplayName)`",";
+    $body="${body}`"ItemCount`":`"$($mailboxstat.ItemCount)`",";
+    $body="${body}`"StorageLimitStatus`":`"$($mailboxstat.StorageLimitStatus)`",";
+    $body="${body}`"LastLogonTime`":`"$($mailboxstat.LastLogonTime)`",";
     $body="${body}`"IsInAcceptedDomain`":`"$(IsInAcceptedDomain($mailbox.PrimarySmtpAddress.ToString()).ToString())`"";
 
     return "${left}${body}${right}";

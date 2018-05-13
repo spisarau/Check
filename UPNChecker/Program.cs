@@ -52,11 +52,12 @@ namespace UPNChecker
                 powerShell.AddScript($"{cmdltName} {upn} {checkexchattr}");
                 var result = powerShell.Invoke();
                 if (result.Count == 0) continue;
-                if (result[0].ToString().Contains("exception")) { Console.WriteLine($"{upn}  {result.First()}");continue; };
+                if (result[0].ToString().Contains("exception")) { Console.WriteLine($"Couldn't add information for {upn} : {result.First()}");continue; };
 
                 usr = new User();
                 usr.addUserPropertiesFromJSON(result[0].ToString());
                 users.Add(usr);
+                Console.WriteLine($"Information for {upn} is succesfully added ");
 
             }
            
